@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Give Laundry</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <h1>Give Laundry Page</h1>
+    
+    <!-- Form for giving laundry -->
+    <form id="giveLaundryForm">
+        <label for="customerName">Customer Name:</label>
+        <input type="text" id="customerName" name="customerName" required><br>
+
+        <label for="giveDate">Give Date:</label>
+        <input type="date" id="giveDate" name="giveDate" required><br>
+
+        <h2>Laundry Items Table</h2>
+        <table id="laundryTable">
+            <!-- Table header -->
+            <thead>
+                <tr>
+                    <th>Item Name</th>
+                    <th>Item Quantity</th>
+                    <th>Remarks</th>
+                </tr>
+            </thead>
+            <!-- Table body with rows for laundry items -->
+            <tbody>
+                <tr>
+                    <td><label for="shirt">Shirt</label></td>
+                    <td><input type="number" class="itemQuantity" name="shirtQuantity" min="0" max="10"></td>
+                    <td><input type="text" class="itemRemarks" name="shirtRemarks"></td>
+                </tr>
+                <tr>
+                    <td><label for="pants">Pants</label></td>
+                    <td><input type="number" class="itemQuantity" name="pantsQuantity" min="0" max="10"></td>
+                    <td><input type="text" class="itemRemarks" name="pantsRemarks"></td>
+                </tr>
+                <tr>
+                    <td><label for="jacket">Jacket</label></td>
+                    <td><input type="number" class="itemQuantity" name="jacketQuantity" min="0" max="10"></td>
+                    <td><input type="text" class="itemRemarks" name="jacketRemarks"></td>
+                </tr>
+                <tr>
+                    <td><label for="kurta">Kurta</label></td>
+                    <td><input type="number" class="itemQuantity" name="kurtaQuantity" min="0" max="10"></td>
+                    <td><input type="text" class="itemRemarks" name="kurtaRemarks"></td>
+                </tr>
+                <tr>
+                    <td><label for="pyjama">Pyjama</label></td>
+                    <td><input type="number" class="itemQuantity" name="pyjamaQuantity" min="0" max="10"></td>
+                    <td><input type="text" class="itemRemarks" name="pyjamaRemarks"></td>
+                </tr>
+                <tr>
+                    <td><label for="salwar">Salwar</label></td>
+                    <td><input type="number" class="itemQuantity" name="salwarQuantity" min="0" max="10"></td>
+                    <td><input type="text" class="itemRemarks" name="salwarRemarks"></td>
+                </tr>
+                <tr>
+                    <td><label for="turban">Turban</label></td>
+                    <td><input type="number" class="itemQuantity" name="turbanQuantity" min="0" max="10"></td>
+                    <td><input type="text" class="itemRemarks" name="turbanRemarks"></td>
+                </tr>
+                <tr>
+                    <td><label for="jeans">Jeans</label></td>
+                    <td><input type="number" class="itemQuantity" name="jeansQuantity" min="0" max="10"></td>
+                    <td><input type="text" class="itemRemarks" name="jeansRemarks"></td>
+                </tr>
+                <tr>
+                    <td><label for="t-shirt">T-Shirt</label></td>
+                    <td><input type="number" class="itemQuantity" name="tshirtQuantity" min="0" max="10"></td>
+                    <td><input type="text" class="itemRemarks" name="tshirtRemarks"></td>
+                </tr>
+                <tr>
+                    <td><label for="shorts">Shorts</label></td>
+                    <td><input type="number" class="itemQuantity" name="shortsQuantity" min="0" max="10"></td>
+                    <td><input type="text" class="itemRemarks" name="shortsRemarks"></td>
+                </tr>
+                <!-- Add 8 more rows for additional items -->
+            </tbody>
+        </table>
+
+        <label for="totalQuantity">Total Quantity (Max 10):</label>
+        <input type="number" id="totalQuantity" name="totalQuantity" min="0" max="10" readonly><br>
+
+        <button type="submit" id="submitBtn">Submit</button>
+    </form>
+
+    <!-- History Container -->
+    <div id="historyContainer">
+        <h2>Given Laundry History</h2>
+        <ul id="historyList"></ul>
+    </div>
+
+    <!-- Selected History Container -->
+    <div id="selectedHistoryContainer" style="display: none;">
+        <h2>Selected Laundry History</h2>
+        <div id="selectedHistoryOutput"></div>
+    </div>
+
+    <!-- Slip Container -->
+    <div id="slipContainer" style="display: none;">
+        <h2>Laundry Slip</h2>
+        <p id="customerNameOutput"></p>
+        <p id="giveDateOutput"></p>
+        <table id="slipTable">
+            <thead>
+                <tr>
+                    <th>Item Name</th>
+                    <th>Item Quantity</th>
+                    <th>Remarks</th>
+                </tr>
+            </thead>
+            <tbody id="slipBody">
+                <!-- Slip content will be displayed here -->
+            </tbody>
+        </table>
+    </div>
+
+    <script src="../js/main.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
