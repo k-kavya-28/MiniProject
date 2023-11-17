@@ -220,7 +220,6 @@ document.addEventListener('DOMContentLoaded', function () {
     const giveLaundryForm = document.getElementById('giveLaundryForm');
     const slipContainer = document.getElementById('slipContainer');
     const slipTableBody = document.getElementById('slipBody');
-    const historyContainer = document.getElementById('historyContainer');
     const historyList = document.getElementById('historyList');
     const selectedHistoryContainer = document.getElementById('selectedHistoryContainer');
     const selectedHistoryOutput = document.getElementById('selectedHistoryOutput');
