@@ -8,7 +8,7 @@ const port = 3000; // or your desired port
 app.use(express.json());
 
 // Connect to MongoDB Atlas
-mongoose.connect('mongodb+srv://admin:Mongodb%2311@cluster0.ihowjh3.mongodb.net/WashWise', {
+mongoose.connect('mongodb+srv://khushikavya6910:oaoBdPHYvHvNzuH7@cluster0.t7qcbnn.mongodb.net/?retryWrites=true&w=majority', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
