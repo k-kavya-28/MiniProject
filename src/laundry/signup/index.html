@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laundry Staff Account Creation</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .registration-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+        }
+
+        .registration-container h2 {
+            color: #333;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #555;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            outline: none;
+        }
+
+        .form-group button {
+            width: 100%;
+            padding: 10px;
+            background-color: #4caf50;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            outline: none;
+        }
+
+        .form-group button:hover {
+            background-color: #45a049;
+        }
+
+        .error {
+            border: 2px solid #ff0000;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="registration-container">
+        <h2>Create Laundry Staff Account</h2>
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" id="name" placeholder="Enter your name">
+        </div>
+        <div class="form-group">
+            <label for="hostel">Hostel:</label>
+            <input type="text" id="hostel" placeholder="Enter your hostel">
+        </div>
+        <div class="form-group">
+            <button onclick="generateCode()">Generate Code</button>
+        </div>
+        <div class="form-group">
+            <label for="code">Generated Code:</label>
+            <input type="text" id="code" readonly>
+        </div>
+        <div class="form-group">
+            <button onclick="submitForm()">Submit</button>
+        </div>
+    </div>
+
+    <script>
+
+       // Retrieve the code counter from localStorage or set it to 1 if not present
+       let codeCounter = localStorage.getItem('codeCounter') || 1;
+
+       function generateCode() {
+           const name = document.getElementById('name').value.trim();
+           const hostel = document.getElementById('hostel').value.trim();
+
+           if (!validateName(name) || !validateHostel(hostel)) {
+               alert("Invalid name or hostel. Please enter valid details.");
+               return;
+           }
+
+           // Generate unique code
+           const uniqueCode = `${hostel.toUpperCase()}${codeCounter}`;
+           document.getElementById('code').value = uniqueCode;
+
+           // Increment the counter for the next code and update localStorage
+           codeCounter++;
+           localStorage.setItem('codeCounter', codeCounter);
+       }
+
+       function submitForm() {
+           const name = document.getElementById('name').value.trim();
+           const hostel = document.getElementById('hostel').value.trim();
+           const code = document.getElementById('code').value.trim();
+
+           // Validate input conditions (you can customize this as needed)
+           if (!validateName(name) || !validateHostel(hostel)) {
+               alert("Invalid name or hostel. Please enter valid details.");
+               return;
+           }
+
+           // Save data (you can replace this with your actual data saving logic)
+           const laundryData = {
+               username: code,
+               password: "laundrydefault",
+               // Add other fields if needed
+           };
+
+           console.log("Laundry Staff Data saved:", laundryData);
+
+           // Redirect to the login page
+           window.location.href = "../login/index.html";
+       }
+
+       // Function to validate name (only characters)
+       function validateName(name) {
+           return /^[a-zA-Z]+$/.test(name);
+       }
+
+       // Function to validate hostel (single character between 'a' and 'q', case-insensitive)
+       function validateHostel(hostel) {
+           return /^[a-qA-Q]$/.test(hostel);
+       }
+
+    </script>
+</body>
+</html>
