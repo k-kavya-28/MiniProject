@@ -13,37 +13,38 @@
         display: flex;
     }
     
-</style>
-<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.0.1/tailwind.min.css'><link rel="stylesheet" href="./style.css">
+	</style>
+	<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.0.1/tailwind.min.css'>
+	<link rel="stylesheet" href="./style.css">
 
 </head>
-<body>
+<body class="bg-gradient-to-tr from-blue-200 via-indigo-200 to-pink-200"></body>
 <!-- partial:index.partial.html -->
 <!-- Component Start -->
-<div class="flex flex-col w-screen h-screen overflow-auto text-gray-700 bg-gradient-to-tr from-blue-200 via-indigo-200 to-pink-200">
-	<div class="flex items-center flex-shrink-0 w-full h-16 px-10 bg-white bg-opacity-75">
+<div class="flex flex-col min-h-screen text-gray-700">
+    <div class="flex items-center h-16 px-4 bg-white bg-opacity-75">
         <!-- Logo -->
 		<img class="w-8 h-8 mr-4" src="https://imgs.search.brave.com/6qv3Nbz8TZSKc4ve5HI1gEOMRnc7onyMmde7vP9D66s/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9jZG4u/dmVjdG9yc3RvY2su/Y29tL2kvcHJldmll/dy0xeC8yNS8zNC93/dy1sb2dvLWxldHRl/ci1tb25vZ3JhbS1z/bGFzaC13aXRoLW1v/ZGVybi12ZWN0b3It/Mjc5ODI1MzQuanBn" alt="Logo">
         
         <!-- Navigation Links -->
-		<div class="ml-10">
-			<a class="mx-2 text-sm font-semibold text-indigo-700" href="#">Dashboard</a>
-            <a class="mx-2 text-sm font-semibold text-gray-600 hover:text-indigo-700" href="#">Support</a>
-			<a class="mx-2 text-sm font-semibold text-gray-600 hover:text-indigo-700" href="#">About</a>
-			<a class="mx-2 text-sm font-semibold text-gray-600 hover:text-indigo-700" href="#">Terms & Conditions</a>
-			<a class="mx-2 text-sm font-semibold text-gray-600 hover:text-indigo-700" href="#">FAQs</a>
-			<a class="mx-2 text-sm font-semibold text-gray-600 hover:text-indigo-700" href="#">Developer Team</a>
-		</div>
+		<div class="ml-4">
+			<a class="text-sm font-semibold text-indigo-700" href="#">Dashboard</a>
+			<a class="ml-2 text-sm font-semibold text-gray-600 hover:text-indigo-700" href="#">Support</a>
+			<a class="ml-2 text-sm font-semibold text-gray-600 hover:text-indigo-700" href="#">About</a>
+			<a class="ml-2 text-sm font-semibold text-gray-600 hover:text-indigo-700" href="#">Terms & Conditions</a>
+			<a class="ml-2 text-sm font-semibold text-gray-600 hover:text-indigo-700" href="#">FAQs</a>
+			<a class="ml-2 text-sm font-semibold text-gray-600 hover:text-indigo-700" href="#">Developer Team</a>
+		  </div>
         <!-- user profile button -->
-		<buton class="flex items-center justify-center w-8 h-8 ml-auto overflow-hidden rounded-full cursor-pointer">
-			<img src="https://imgs.search.brave.com/lLnqg2kPdGM-e7B_ihhzq3q2eqzhmvI24aK9tQ2341c/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9pY29u/LWxpYnJhcnkuY29t/L2ltYWdlcy91c2Vy/LWljb24tanBnL3Vz/ZXItaWNvbi1qcGct/Ni5qcGc" alt="">
-		</buton>
+		<button class="ml-auto w-8 h-8 overflow-hidden rounded-full cursor-pointer">
+			<img class="w-full h-full" src="https://imgs.search.brave.com/lLnqg2kPdGM-e7B_ihhzq3q2eqzhmvI24aK9tQ2341c/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9pY29u/LWxpYnJhcnkuY29t/L2ltYWdlcy91c2Vy/LWljb24tanBnL3Vz/ZXItaWNvbi1qcGct/Ni5qcGc" alt="">
+		  </button>
 	</div>
-	<div class="px-10 mt-6">
+	<div class="px-4 mt-6">
 		<h1 class="text-2xl font-bold">Laundry</h1>
 	</div>
-	<div class="flex flex-grow px-10 mt-4 space-x-6 overflow-auto">
-		<div class="flex flex-col flex-shrink-0 w-72">
+	<div class="flex flex-grow px-4 mt-4 space-x-6 overflow-auto">
+		<div class="flex flex-col w-full lg:w-1/2">
 			<div class="flex items-center flex-shrink-0 h-10 px-2">
 				<span class="block text-sm font-semibold">Current Status</span>
 				<span class="flex items-center justify-center w-5 h-5 ml-2 text-sm font-semibold text-indigo-500 bg-white rounded bg-opacity-30">3</span>
@@ -117,7 +118,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="flex flex-col flex-shrink-0 w-72">
+		<div class="flex flex-col w-full lg:w-1/2">
 			<div class="flex items-center flex-shrink-0 h-10 px-2">
 				<span class="block text-sm font-semibold">History</span>
 				<span class="flex items-center justify-center w-5 h-5 ml-2 text-sm font-semibold text-indigo-500 bg-white rounded bg-opacity-30">3</span>
@@ -209,7 +210,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="flex-shrink-0 w-6"></div>
+		<!-- <div class="flex-shrink-0 w-6"></div> -->
 	</div>
 </div>
 <!-- Component End -->

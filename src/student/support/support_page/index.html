@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Laundry Management System Support</title>
+  <style>
+    /* Add the provided CSS here */
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f5f5f5;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    .container {
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+    }
+
+    header {
+      background-color: #007bff;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+    }
+
+    form {
+      max-width: 400px;
+      margin: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      color: #555;
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 16px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+
+    input[type="button"] {
+      background-color: #007bff;
+      color: #fff;
+      cursor: pointer;
+    }
+
+    input[type="button"]:hover {
+      background-color: #0056b3;
+    }
+
+    input[type="button"]:focus {
+      outline: none;
+    }
+
+    .alert {
+      padding: 10px;
+      color: #721c24;
+      background-color: #f8d7da;
+      border: 1px solid #f5c6cb;
+      border-radius: 4px;
+      margin-top: 10px;
+      display: none;
+    }
+
+    .alert.success {
+      color: #155724;
+      background-color: #d4edda;
+      border-color: #c3e6cb;
+    }
+
+    .alert.show {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Laundry Management System Support</h1>
+    </header>
+    <form id="feedbackForm">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+      <br>
+      <label for="contactNumber">Contact Number:</label>
+      <input type="tel" id="contactNumber" name="contactNumber" required>
+      <br>
+      <label for="feedback">Feedback:</label>
+      <textarea id="feedback" name="feedback" rows="4" required></textarea>
+      <br>
+      <input type="button" value="Submit" onclick="sendFeedback()">
+    </form>
+    <div class="alert" id="alertMessage"></div>
+  </div>
+
+  <script>
+    function sendFeedback() {
+      var name = document.getElementById('name').value;
+      var contactNumber = document.getElementById('contactNumber').value;
+      var feedback = document.getElementById('feedback').value;
+  
+      // You would typically make an AJAX request to a server here
+      // and let the server handle sending the email
+      // Here, we are just displaying an alert for demonstration purposes
+      // alert('Feedback submitted!\n\nSubject: ' + subject + '\nBody:\n' + body);
+  
+      // Assuming a successful submission, clear the form and display a success message
+      clearForm();
+      displayAlert('Feedback submitted successfully!', 'success');
+    }
+  
+    function clearForm() {
+      document.getElementById('name').value = '';
+      document.getElementById('contactNumber').value = '';
+      document.getElementById('feedback').value = '';
+    }
+  
+    function displayAlert(message, type) {
+      var alertElement = document.getElementById('alertMessage');
+      alertElement.innerHTML = message;
+      alertElement.className = 'alert ' + type + ' show';
+  
+      // Hide the alert after 3 seconds (adjust the timeout as needed)
+      setTimeout(function () {
+        alertElement.className = 'alert';
+      }, 3000);
+    }
+  </script>
+  
+</body>
+</html>
+
