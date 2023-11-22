@@ -4,7 +4,7 @@ exports.signup = async (req, res) => {
   try {
     console.log('Received signup request:', req.body);
 
-    const { username, password, email } = req.body;
+    const { name, roll, hostel, room } = req.body;
 
     // rest of the code
   } catch (error) {
