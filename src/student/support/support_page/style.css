@@ -1,81 +1,92 @@
+/* Add some basic styling to the body */
 body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f5f5f5;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-  }
-  
-  .container {
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-  }
-  
-  header {
-    background-color: #007bff;
-    color: #fff;
-    padding: 20px;
-    text-align: center;
-  }
-  
-  form {
-    max-width: 400px;
-    margin: 20px;
-  }
-  
-  label {
-    display: block;
-    margin-bottom: 8px;
-    color: #555;
-  }
-  
-  input,
-  textarea {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 16px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-  }
-  
-  input[type="button"] {
-    background-color: #007bff;
-    color: #fff;
-    cursor: pointer;
-  }
-  
-  input[type="button"]:hover {
-    background-color: #0056b3;
-  }
-  
-  input[type="button"]:focus {
-    outline: none;
-  }
-  
-  .alert {
-    padding: 10px;
-    color: #721c24;
-    background-color: #f8d7da;
-    border: 1px solid #f5c6cb;
-    border-radius: 4px;
-    margin-top: 10px;
-    display: none;
-  }
-  
-  .alert.success {
-    color: #155724;
-    background-color: #d4edda;
-    border-color: #c3e6cb;
-  }
-  
-  .alert.show {
-    display: block;
-  }
-  
-  
+  font-family: 'Arial', sans-serif;
+  background-color: #f4f4f4;
+  color: #333;
+  margin: 0;
+  padding: 0;
+}
+
+/* Style the header */
+h1 {
+  text-align: center;
+  color: #f4f4f4; 
+}
+
+/* Style the form container */
+.container {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* Style the form header */
+header {
+  background-color: #009688;
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  color: #555;
+}
+
+/* Style form elements */
+form {
+  max-width: 500px; /* Adjusted the max-width of the form for better readability */
+  margin: 0 auto;
+}
+
+input,
+textarea {
+  width: calc(100% - 20px); /* Adjusted width calculation */
+  padding: 10px;
+  margin-bottom: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input[type="button"] {
+  background-color: #009688;
+  color: #fff;
+  cursor: pointer;
+}
+
+input[type="button"]:hover {
+  background-color: #00796b;
+}
+
+input[type="button"]:focus {
+  outline: none;
+}
+
+/* Style the alert message */
+.alert {
+  padding: 10px;
+  color: #721c24;
+  background-color: #f8d7da;
+  border: 1px solid #f5c6cb;
+  border-radius: 4px;
+  margin-top: 10px;
+  display: none;
+}
+
+.alert.success {
+  color: #155724;
+  background-color: #d4edda;
+  border-color: #c3e6cb;
+}
+
+.alert.show {
+  display: block;
+}
