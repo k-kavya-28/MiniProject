@@ -108,38 +108,36 @@
   </div>
 
   <script>
+    
     function sendFeedback() {
       var name = document.getElementById('name').value;
       var contactNumber = document.getElementById('contactNumber').value;
       var feedback = document.getElementById('feedback').value;
   
-      // You would typically make an AJAX request to a server here
-      // and let the server handle sending the email
-      // Here, we are just displaying an alert for demonstration purposes
-      // alert('Feedback submitted!\n\nSubject: ' + subject + '\nBody:\n' + body);
+      // Make an AJAX request to the server
+      var xhr = new XMLHttpRequest();
+      xhr.open('POST', 'http://localhost:3000/send-feedback', true);
+      xhr.setRequestHeader('Content-Type', 'application/json');
   
-      // Assuming a successful submission, clear the form and display a success message
-      clearForm();
-      displayAlert('Feedback submitted successfully!', 'success');
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+          // Assuming a successful submission, clear the form and display a success message
+          clearForm();
+          displayAlert(xhr.responseText, 'success');
+        } else if (xhr.readyState == 4 && xhr.status != 200) {
+          // Display an error message if the submission fails
+          displayAlert('Failed to submit feedback. Please try again later.', 'error');
+        }
+      };
+  
+      // Send the data as JSON
+      xhr.send(JSON.stringify({ name, contactNumber, feedback }));
     }
-  
-    function clearForm() {
-      document.getElementById('name').value = '';
-      document.getElementById('contactNumber').value = '';
-      document.getElementById('feedback').value = '';
-    }
-  
-    function displayAlert(message, type) {
-      var alertElement = document.getElementById('alertMessage');
-      alertElement.innerHTML = message;
-      alertElement.className = 'alert ' + type + ' show';
-  
-      // Hide the alert after 3 seconds (adjust the timeout as needed)
-      setTimeout(function () {
-        alertElement.className = 'alert';
-      }, 3000);
-    }
+
   </script>
+  <!-- Change this line to point to your server file -->
+<script src="server1.js"></script>
+
   
 </body>
 </html>
