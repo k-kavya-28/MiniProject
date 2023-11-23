@@ -5,6 +5,14 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  uniqUserName:{
+    type:String,
+    required:true,
+  },
+  password:{
+    type:String,
+    default:"000"
+  },
   branch: {
     type: String,
     required: true,
