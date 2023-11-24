@@ -1,78 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-	<meta charset="UTF-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
-	<link rel="stylesheet" href="style.css" />
-	<title>Sign in & Sign up Form</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <h1>Laundry Login Portal</h1>
 </head>
-
 <body>
-	<div class="container">
-		<div class="forms-container">
-			<div class="signin-signup">
-				<form action="#" class="sign-in-form">
-					<h2 class="title">Sign in</h2>
-					<div class="input-field">
-						<i class="fas fa-user"></i>
-						<input type="text" placeholder="Username" />
-					</div>
-					<div class="input-field">
-						<i class="fas fa-lock"></i>
-						<input type="password" placeholder="Password" />
-					</div>
-					<input type="submit" value="Login" class="btn solid" />
-				</form>
-				<form action="#" class="sign-up-form">
-					<h2 class="title">Sign up</h2>
-					<div class="input-field">
-						<i class="fas fa-user"></i>
-						<input type="text" placeholder="Username" />
-					</div>
-					<div class="input-field">
-						<i class="fas fa-envelope"></i>
-						<input type="text" placeholder="UserID" />
-					</div>
-					<div class="input-field">
-						<i class="fas fa-lock"></i>
-						<input type="password" placeholder="Password" />
-					</div>
-					<input type="submit" class="btn" value="Sign up" />
-				</form>
-			</div>
-		</div>
-
-		<div class="panels-container">
-			<div class="panel left-panel">
-				<div class="content">
-					<h3>New here ?</h3>
-					<p>
-						<b>Generate Laundary number by creating new account.  </b>
-					</p>
-					<button class="btn transparent" id="sign-up-btn">
-						Sign up
-					</button>
-				</div>
-				<img  src="https://i.ibb.co/6HXL6q1/Privacy-policy-rafiki.png" class="image" alt="" />
-			</div>
-			<div class="panel right-panel">
-				<div class="content">
-					<h3>One of us ?</h3>
-					<p>
-						<b>Already has Laundary Number.</b>
-					</p>
-					<button class="btn transparent" id="sign-in-btn">
-						Sign in
-					</button>
-				</div>
-				<img src="https://i.ibb.co/nP8H853/Mobile-login-rafiki.png"  class="image" alt="" />
-			</div>
-		</div>
-	</div>
-
-	<script src="script.js"></script>
+  <div class="container" id="container">
+    <div class="form-container sign-in-container">
+      <form>
+        <h1>Laundry Sign in</h1>
+        <input type="text" id="userId" placeholder="User ID" />
+        <input type="password" id="password" placeholder="Password" />
+        <button type="button" onclick="validateCredentials()">Sign In</button>
+      </form>
+    </div>
+    <div class="overlay-container">
+      <div class="overlay">
+        <div class="overlay-panel overlay-right">
+          <h1>Welcome Back!</h1>
+          <p>To keep connected with us, please login with your personal info.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    function validateCredentials() {
+      var userId = document.getElementById('userId').value;
+      var password = document.getElementById('password').value;
+    
+      // Simulated server-side logic
+      if (userId === 'staff' && password === 'washwise') {
+        window.location.href = '../dashboard/index.html';
+      } else {
+        alert('Incorrect User ID or Password. Please try again.');
+      }
+    }
+  </script>
 </body>
-
 </html>
