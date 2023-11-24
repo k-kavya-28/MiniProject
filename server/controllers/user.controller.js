@@ -1,4 +1,5 @@
 const User = require("../models/user")
+const Laundry = require("../models/laundry.model")
 const jwt_key=process.env.JWT_KEY
 const jwt=require("jsonwebtoken")
 // const bcrypt=require("bcrypt")
@@ -28,44 +29,42 @@ const SignUpController=async(req,res)=>{
 }
 
 const SignInController=async(req,res)=>{
-    try{
-        const Login_Data=req.body
-        console.log(Login_Data)
-        const Req_Token=req.cookies
-        console.log(Req_Token)
-        // console.log(Req_token)
-        if(Req_Token){
-            const user_id=jwt.verify(Req_Token,jwt_key).payload
-            const UserDocument=await User.findById(user_id)
-            if(!UserDocument) throw new Error("User not found");
-                res.cookie("loged",Req_Token)
-                console.log("chal reha")
-                res.status(200).json({
-                    logedin:true,
-                    cookie:Req_Token,
-                    role:UserDocument.role
-                })
+    try {
+        const { userId, password } = req.body;
+        const user = await User.findOne({ uniqUserName: userId });
+        if (!user) {
+          return res.status(401).json({ message: 'Invalid credentials' });
         }
-        else{
-        const UserDocument=await User.findOne({uniqUserName:Login_Data.uniqUserName})
-        console.log(UserDocument)
-        if(!UserDocument) throw new Error("Signup first")
-        if(Login_Data.password!==UserDocument.password) throw new Error("Password is not Valid")
-        const token=jwt.sign({payload:UserDocument._id},jwt_key)
-        res.cookie("loged",token,{expires:new Date(Date.now()+5654654654)})
-        res.status(200).json({
-            message:"User Loged In",
-            loged:true,
-        })
-    }
-    }
-    catch(err){
-        res.status(409).json({
-            message:err.message,
-            loged:false
-        })
+        if(user.password!==password){
+            return res.status(401).json({ message: 'Invalid credentials' });
+        }
+        const token = jwt.sign({ id: user._id }, jwt_key);
+        res.status(200).json({ token: token, message: 'Logged in successfully' });
+    } catch (error) {
+        res.send({
+            message: error.message
+        });
     }
 }
-    
 
-module.exports={SignUpController,SignInController}
+const fetchData=async(req,res)=>{
+    try {
+        const {token} = req.body;
+        const decoded=jwt.verify(token,jwt_key)
+        const user=await User.findById(decoded.id)
+        const laundry = await Laundry.find({customerID: user.uniqUserName})
+        console.log(laundry)
+        res.status(200).json({
+            user: user,
+            laundry: laundry,
+            message: 'Fetched data successfully'
+        })
+    } catch (error) {
+        console.log(error.message)
+        res.send({
+            message: error.message
+        });
+    }
+}   
+
+module.exports={SignUpController,SignInController,fetchData}

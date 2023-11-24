@@ -1,3 +1,7 @@
+/* eslint-disable */
+import 'regenerator-runtime/runtime';
+import axios from 'axios';
+
 const signUpButton = document.getElementById("signUp");
 const signInButton = document.getElementById("signIn");
 const container = document.getElementById("container");

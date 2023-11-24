@@ -9,11 +9,11 @@
 <body>
   <div class="container" id="container">
     <div class="form-container sign-in-container">
-      <form>
+      <form action="#" onsubmit="event.preventDefault(); login();">
         <h1>Laundry Sign in</h1>
         <input type="text" id="userId" placeholder="User ID" />
         <input type="password" id="password" placeholder="Password" />
-        <button type="button" onclick="validateCredentials()">Sign In</button>
+        <button type="submit">Sign In</button>
       </form>
     </div>
     <div class="overlay-container">
@@ -25,18 +25,32 @@
       </div>
     </div>
   </div>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   <script>
-    function validateCredentials() {
+    async function login() {
       var userId = document.getElementById('userId').value;
       var password = document.getElementById('password').value;
-    
-      // Simulated server-side logic
-      if (userId === 'staff' && password === 'washwise') {
-        window.location.href = '../dashboard/index.html';
-      } else {
-        alert('Incorrect User ID or Password. Please try again.');
+  
+      try {
+        const res = await axios.post("http://localhost:3001/staff/signin", {
+          userID: userId,
+          password: password
+        })
+        console.log(res.data);
+        if (res.data.token) {
+          document.cookie = `laundarytoken=${res.data.token}`
+          console.log(document.cookie);
+          window.location.href = '../dashboard/index.html'
+          // window.location.replace('../dashboard/index.html');
+
+        } else {
+          alert("Invalid credentials");
+        }
+      } catch (error) {
+        console.log(error);
       }
     }
+
   </script>
 </body>
 </html>

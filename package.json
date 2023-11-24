@@ -27,8 +27,8 @@
   },
   "scripts": {
     "start": "node server/app.js",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
+    "dev": "parcel index.html",
+    "build": "parcel build index.html",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {

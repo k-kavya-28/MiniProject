@@ -1,7 +1,7 @@
-const LaundaryModel = require("../models/laundary.model")
+const LaundaryModel = require("../models/laundry.model")
 const User = require("../models/user")
 
-const CreateLaundary=async(req,res)=>{
+const CreateLaundry=async(req,res)=>{
     try{
         const LaundaryData=req.body
         const UserDoc=await User.find({customerID:LaundaryData.customerID})
@@ -27,7 +27,7 @@ const CreateLaundary=async(req,res)=>{
     }
 }
 
-const FetchNotDeliveredLaundary=async(req,res)=>{
+const FetchNotDeliveredLaundry=async(req,res)=>{
     try{
         const LaudnaryData=req.body
         console.log(LaudnaryData)
@@ -47,7 +47,7 @@ const FetchNotDeliveredLaundary=async(req,res)=>{
     }
 }
 
-const DeliverLaundary=async(req,res)=>{
+const DeliverLaundry=async(req,res)=>{
     try{
         const laundaryID=req.params.id
         const UpdateLaundary=await LaundaryModel.findByIdAndUpdate()
@@ -61,4 +61,5 @@ const DeliverLaundary=async(req,res)=>{
     }
 }
 
-module.exports={CreateLaundary,FetchNotDeliveredLaundary}
+
+module.exports={CreateLaundry,FetchNotDeliveredLaundry,DeliverLaundry}

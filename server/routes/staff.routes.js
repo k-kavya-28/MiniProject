@@ -1,7 +1,5 @@
-// routes/signup.js
-
 const express = require('express');
-const { SignUpController, SignInController, fetchData } = require('../controllers/user.controller');
+const { SignUpController, SignInController, fetchData } = require('../controllers/laundry.staff');
 const router = express.Router();
 
 router.post("/signup",SignUpController)
