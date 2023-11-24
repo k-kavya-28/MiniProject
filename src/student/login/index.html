@@ -54,7 +54,6 @@
       <h1>Student Sign in</h1>
       <input type="text" id="userId" placeholder="User ID" />
       <input type="password" id="password" placeholder="Password" />
-      <a href="#">Forgot your password?</a>
       <button type="submit">Sign In</button>
     </form>
   </div>
@@ -73,15 +72,13 @@
     </div>
   </div>
   </div>
-  <img  src="https://i.ibb.co/6HXL6q1/Privacy-policy-rafiki.png" class="image" alt="" />
-
 <script>
     function validateCredentials() {
         var userId = document.getElementById('userId').value;
         var password = document.getElementById('password').value;
     
         // Simulated server-side logic
-        if (userId === generateCode && password === 'hostellaundry') {
+        if (userId === 'Q118068' && password === 'hostellaundry') {
           window.location.href = '../dashboard/index.html';
         } else {
           alert('Incorrect User ID or Password. Please try again.');
