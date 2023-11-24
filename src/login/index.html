@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Laundry Dashboard</title>
+    <title>Login Portal</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -16,17 +16,8 @@
             height: 100vh;
         }
 
-        .dashboard {
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .button-container {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 20px;
+        .container {
+            text-align: center;
         }
 
         .button {
@@ -40,11 +31,11 @@
             color: #fff;
         }
 
-        .give-button {
+        .student-button {
             background-color: #4caf50;
         }
 
-        .take-button {
+        .laundry-button {
             background-color: #2196f3;
         }
 
@@ -55,13 +46,10 @@
 </head>
 <body>
 
-<div class="dashboard">
-    <h2>Laundry Dashboard</h2>
-    <div class="button-container">
-        <a href="../give/give-laundry.html" class="button give-button">Give</a>
-        <a href="../take/index.html" class="button take-button">Take</a>
-        <!-- Removed the Complaints button -->
-    </div>
+<div class="container">
+    <h2>Login Portal</h2>
+    <a href="../student/login/index.html" class="button student-button">Student</a>
+    <a href="../laundry/login/index.html" class="button laundry-button">Laundry</a>
 </div>
 
 </body>
