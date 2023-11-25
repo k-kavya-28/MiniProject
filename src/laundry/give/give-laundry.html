@@ -4,18 +4,67 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Give Laundry</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        tr td {
+            text-align: center;
+            padding: 10px;
+        }
+
+        .quantity-control {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .quantity-btn {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background-color: gray; 
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 0 10px; /* Adjust the margin as needed */
+            transition: background-color 0.3s; /* Smooth transition effect */
+        }
+
+        .quantity-btn:hover {
+            background-color: #ff4b2b; /* Color on hover */
+        }
+
+        .itemQuantity {
+            width: 60px; /* Adjust the width as needed */
+            text-align: center;
+            font-size: 16px;
+        }
+
+        .itemRemarks {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 8px;
+        }
+    </style>
     <link rel="stylesheet" href="./style.css">
 </head>
 <body>
     <h1>Give Laundry Page</h1>
     
     <!-- Form for giving laundry -->
-    <form id="giveLaundryForm">
-        <label for="customerName">Customer Name:</label>
-        <input type="text" id="customerName" name="customerName" required><br>
+    <form id="giveLaundryForm" action="#" onsubmit="PostCreate()">    
 
-        <label for="giveDate">Give Date:</label>
-        <input type="date" id="giveDate" name="giveDate" required><br>
+        <!-- <label for="giveDate">Give Date:</label>
+        <input type="date" id="giveDate" name="giveDate" required><br> -->
+        <label for="giveDate">Date:</label>
+        <input type="date" id="giveDate" name="giveDate" required readonly><br>
+
+        <label for="customerName">Student ID:</label>
+        <input type="text" id="customerName" name="customerName" required><br>
 
         <h2>Laundry Items Table</h2>
         <table id="laundryTable">
@@ -31,99 +80,259 @@
             <tbody>
                 <tr>
                     <td><label for="shirt">Shirt</label></td>
-                    <td><input type="number" class="itemQuantity" name="shirtQuantity" min="0" max="10"></td>
+                    <!-- <td><input type="number" class="itemQuantity" name="shirtQuantity" min="0" max="10"></td> -->
+                    <td>
+                        <div class="quantity-control">
+                            <button type="button" class="quantity-btn" data-action="decrement">-</button>
+                            <input id="shirt" type="number" class="itemQuantity" name="shirtQuantity" value="0" min="0" max="10" readonly>
+                            <button type="button" class="quantity-btn" data-action="increment">+</button>
+                        </div>
+                    </td>
                     <td><input type="text" class="itemRemarks" name="shirtRemarks"></td>
                 </tr>
                 <tr>
                     <td><label for="pants">Pants</label></td>
-                    <td><input type="number" class="itemQuantity" name="pantsQuantity" min="0" max="10"></td>
+                    <td>
+                        <div class="quantity-control">
+                            <button type="button" class="quantity-btn" data-action="decrement">-</button>
+                            <input id="pants" type="number" class="itemQuantity" name="pantsQuantity" value="0" min="0" max="10" readonly>
+                            <button type="button" class="quantity-btn" data-action="increment">+</button>
+                        </div>
+                    </td>
                     <td><input type="text" class="itemRemarks" name="pantsRemarks"></td>
                 </tr>
                 <tr>
                     <td><label for="jacket">Jacket</label></td>
-                    <td><input type="number" class="itemQuantity" name="jacketQuantity" min="0" max="10"></td>
+                    <td>
+                        <div class="quantity-control">
+                            <button type="button" class="quantity-btn" data-action="decrement">-</button>
+                            <input id="jacket" type="number" class="itemQuantity" name="jacketQuantity" value="0" min="0" max="10" readonly>
+                            <button type="button" class="quantity-btn" data-action="increment">+</button>
+                        </div>
+                    </td>
                     <td><input type="text" class="itemRemarks" name="jacketRemarks"></td>
                 </tr>
                 <tr>
                     <td><label for="kurta">Kurta</label></td>
-                    <td><input type="number" class="itemQuantity" name="kurtaQuantity" min="0" max="10"></td>
+                    <td>
+                        <div class="quantity-control">
+                            <button type="button" class="quantity-btn" data-action="decrement">-</button>
+                            <input id="kurta" type="number" class="itemQuantity" name="kurtaQuantity" value="0" min="0" max="10" readonly>
+                            <button type="button" class="quantity-btn" data-action="increment">+</button>
+                        </div>
+                    </td>
                     <td><input type="text" class="itemRemarks" name="kurtaRemarks"></td>
                 </tr>
                 <tr>
                     <td><label for="pyjama">Pyjama</label></td>
-                    <td><input type="number" class="itemQuantity" name="pyjamaQuantity" min="0" max="10"></td>
+                    <td>
+                        <div class="quantity-control">
+                            <button type="button" class="quantity-btn" data-action="decrement">-</button>
+                            <input id="pyjama" type="number" class="itemQuantity" name="pyjamaQuantity" value="0" min="0" max="10" readonly>
+                            <button type="button" class="quantity-btn" data-action="increment">+</button>
+                        </div>
+                    </td>
                     <td><input type="text" class="itemRemarks" name="pyjamaRemarks"></td>
                 </tr>
                 <tr>
                     <td><label for="skirt">Skirt</label></td>
-                    <td><input type="number" class="itemQuantity" name="skirtQuantity" min="0" max="10"></td>
+                    <td>
+                        <div class="quantity-control">
+                            <button type="button" class="quantity-btn" data-action="decrement">-</button>
+                            <input id="skirt" type="number" class="itemQuantity" name="skirtQuantity" value="0" min="0" max="10" readonly>
+                            <button type="button" class="quantity-btn" data-action="increment">+</button>
+                        </div>
+                    </td>
                     <td><input type="text" class="itemRemarks" name="skirtRemarks"></td>
                 </tr>
                 <tr>
                     <td><label for="turban">Turban</label></td>
-                    <td><input type="number" class="itemQuantity" name="turbanQuantity" min="0" max="10"></td>
+                    <td>
+                        <div class="quantity-control">
+                            <button type="button" class="quantity-btn" data-action="decrement">-</button>
+                            <input id="turban" type="number" class="itemQuantity" name="turbanQuantity" value="0" min="0" max="10" readonly>
+                            <button type="button" class="quantity-btn" data-action="increment">+</button>
+                        </div>
+                    </td>
                     <td><input type="text" class="itemRemarks" name="turbanRemarks"></td>
                 </tr>
                 <tr>
                     <td><label for="jeans">Jeans</label></td>
-                    <td><input type="number" class="itemQuantity" name="jeansQuantity" min="0" max="10"></td>
+                    <td>
+                        <div class="quantity-control">
+                            <button type="button" class="quantity-btn" data-action="decrement">-</button>
+                            <input id="jeans" type="number" class="itemQuantity" name="jeansQuantity" value="0" min="0" max="10" readonly>
+                            <button type="button" class="quantity-btn" data-action="increment">+</button>
+                        </div>
+                    </td>
                     <td><input type="text" class="itemRemarks" name="jeansRemarks"></td>
                 </tr>
                 <tr>
                     <td><label for="t-shirt">T-Shirt</label></td>
-                    <td><input type="number" class="itemQuantity" name="tshirtQuantity" min="0" max="10"></td>
+                    <td>
+                        <div class="quantity-control">
+                            <button type="button" class="quantity-btn" data-action="decrement">-</button>
+                            <input id="t-shirt" type="number" class="itemQuantity" name="tshirtQuantity" value="0" min="0" max="10" readonly>
+                            <button type="button" class="quantity-btn" data-action="increment">+</button>
+                        </div>
+                    </td>
                     <td><input type="text" class="itemRemarks" name="tshirtRemarks"></td>
                 </tr>
                 <tr>
                     <td><label for="shorts">Shorts</label></td>
-                    <td><input type="number" class="itemQuantity" name="shortsQuantity" min="0" max="10"></td>
+                    <td>
+                        <div class="quantity-control">
+                            <button type="button" class="quantity-btn" data-action="decrement">-</button>
+                            <input id="shorts" type="number" class="itemQuantity" name="shortsQuantity" value="0" min="0" max="10" readonly>
+                            <button type="button" class="quantity-btn" data-action="increment">+</button>
+                        </div>
+                    </td>
                     <td><input type="text" class="itemRemarks" name="shortsRemarks"></td>
                 </tr>
+                <tfoot>
+                    <tr>
+                        <td colspan="2">Total Quantity (Max 10):</td>
+                        <td id="totalQuantity">0</td>
+                    </tr>
+                </tfoot>
+                
                 <!-- Add 8 more rows for additional items -->
             </tbody>
         </table>
 
-        <label for="totalQuantity">Total Quantity (Max 10):</label>
-        <input type="number" id="totalQuantity" name="totalQuantity" min="0" max="10" readonly><br>
+        <!-- <label for="totalQuantity">Total Quantity (Max 10):</label> -->
+        <!-- <input type="number" id="totalQuantity" name="totalQuantity" min="0" max="10" readonly><br> -->
 
         <button type="submit" id="submitBtn">Submit</button>
     </form>
 
-    <!-- History Container -->
-    <div id="historyContainer">
-        <h2>Given Laundry History</h2>
-        <ul id="historyList"></ul>
-    </div>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+        const studentId = document.getElementById('customerName');
+        const giveDate = document.getElementById('giveDate');
+        const shirtQuantity = document.querySelector('input[name="shirtQuantity"]');
+        const pantsQuantity = document.querySelector('input[name="pantsQuantity"]');
+        const jacketQuantity = document.querySelector('input[name="jacketQuantity"]');
+        const kurtaQuantity = document.querySelector('input[name="kurtaQuantity"]');
+        const pyjamaQuantity = document.querySelector('input[name="pyjamaQuantity"]');
+        const skirtQuantity = document.querySelector('input[name="skirtQuantity"]');
+        const turbanQuantity = document.querySelector('input[name="turbanQuantity"]');
+        const jeansQuantity = document.querySelector('input[name="jeansQuantity"]');
+        const tshirtQuantity = document.querySelector('input[name="tshirtQuantity"]');
+        const shortsQuantity = document.querySelector('input[name="shortsQuantity"]');
+        const shirtRemarks = document.querySelector('input[name="shirtRemarks"]');
+        const pantsRemarks = document.querySelector('input[name="pantsRemarks"]');
+        const jacketRemarks = document.querySelector('input[name="jacketRemarks"]');
+        const kurtaRemarks = document.querySelector('input[name="kurtaRemarks"]');
+        const pyjamaRemarks = document.querySelector('input[name="pyjamaRemarks"]');
+        const skirtRemarks = document.querySelector('input[name="skirtRemarks"]');
+        const turbanRemarks = document.querySelector('input[name="turbanRemarks"]');
+        const jeansRemarks = document.querySelector('input[name="jeansRemarks"]');
+        const tshirtRemarks = document.querySelector('input[name="tshirtRemarks"]');
+        const shortsRemarks = document.querySelector('input[name="shortsRemarks"]');
+        const totalQuantity = document.getElementById('totalQuantity');
+        const submitBtn = document.getElementById('submitBtn');
 
-    <!-- Selected History Container -->
-    <div id="selectedHistoryContainer" style="display: none;">
-        <h2>Selected Laundry History</h2>
-        <div id="selectedHistoryOutput"></div>
-    </div>
+        // Get today's date and set it as the default value for the date input
+        const today = new Date();
+        const todayString = today.toISOString().substr(0, 10);
+        giveDate.value = todayString;
 
-    <!-- Slip Container -->
-    <div id="slipContainer" style="display: none;">
-        <h2>Laundry Slip</h2>
-        <p id="customerNameOutput"></p>
-        <p id="giveDateOutput"></p>
-        <table id="slipTable">
-            <thead>
-                <tr>
-                    <th>Item Name</th>
-                    <th>Item Quantity</th>
-                    <th>Remarks</th>
-                </tr>
-            </thead>
-            <tbody id="slipBody">
-                <!-- Slip content will be displayed here -->
-            </tbody>
-        </table>
-    </div>
+        async function PostCreate() {
+            try {
+                const res = await axios.post("http://localhost:3001/laundry/create", {
+                    customerID: studentId.value,
+                    giveDate: giveDate.value,
+                    Shirt: {
+                        quantity: shirtQuantity.value,
+                        remarks: shirtRemarks.value
+                    },
+                    Pants: {
+                        quantity: pantsQuantity.value,
+                        remarks: pantsRemarks.value
+                    },
+                    Jacket: {
+                        quantity: jacketQuantity.value,
+                        remarks: jacketRemarks.value
+                    },
+                    Kurta: {
+                        quantity: kurtaQuantity.value,
+                        remarks: kurtaRemarks.value
+                    },
+                    Pyjama: {
+                        quantity: pyjamaQuantity.value,
+                        remarks: pyjamaRemarks.value
+                    },
+                    Skirt: {
+                        quantity: skirtQuantity.value,
+                        remarks: skirtRemarks.value
+                    },
+                    Turban: {
+                        quantity: turbanQuantity.value,
+                        remarks: turbanRemarks.value
+                    },
+                    Jeans: {
+                        quantity: jeansQuantity.value,
+                        remarks: jeansRemarks.value
+                    },
+                    Tshirt: {
+                        quantity: tshirtQuantity.value,
+                        remarks: tshirtRemarks.value
+                    },
+                    Shorts: {
+                        quantity: shortsQuantity.value,
+                        remarks: shortsRemarks.value
+                    },
+                    totalQuantity: totalQuantity.textContent,
+                    status: "notpicked"
+                });
+                console.log(res.data);
 
-    <script src="./main.js"></script>
+                if(res.data.created==true){
+                    alert("Laundry given successfully");
+                } 
+            } catch (error) {
+                console.log(error);
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+            const quantityInputs = document.querySelectorAll('.itemQuantity');
+            const totalQuantityElement = document.getElementById('totalQuantity');
+            let totalQuantity = 0;
+    
+            quantityInputs.forEach(function (input) {
+                const decrementBtn = input.parentElement.querySelector('[data-action="decrement"]');
+                const incrementBtn = input.parentElement.querySelector('[data-action="increment"]');
+    
+                decrementBtn.addEventListener('click', function () {
+                    updateQuantity(input, -1);
+                });
+    
+                incrementBtn.addEventListener('click', function () {
+                    updateQuantity(input, 1);
+                });
+            });
+    
+            function updateQuantity(input, step) {
+                let value = parseInt(input.value) + step;
+    
+                // Ensure the value is within the specified range
+                value = Math.min(Math.max(value, parseInt(input.min)), parseInt(input.max));
+    
+                // Check if the total sum will not exceed 10
+                if (totalQuantity + step <= 10 && totalQuantity + step >= 0) {
+                    input.value = value;
+                    totalQuantity += step;
+                }
+    
+                totalQuantityElement.textContent = totalQuantity;
+            }
+        });
+    </script>
+    
 </body>
 </html>
-
 
 
 

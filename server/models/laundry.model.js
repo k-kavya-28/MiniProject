@@ -28,6 +28,10 @@ const laundrySchema = new mongoose.Schema({
   Jean: clothData,
   Tshirt: clothData,
   Shorts: clothData,
+  totalQuantity: {
+    type: Number,
+    default: 0,
+  },
   status: {
     type: String,
     enum: ["picked", "notpicked"],

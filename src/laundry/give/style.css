@@ -10,7 +10,7 @@ body {
 /* Style the header */
 h1 {
     text-align: center;
-    color: #009688;
+    color: #ff4b2b;
 }
 
 /* Style the form */
@@ -36,7 +36,7 @@ th, td {
 }
 
 th {
-    background-color: #009688;
+    background-color: #ff4b2b;
     color: #fff;
 }
 
@@ -54,13 +54,13 @@ input, button {
 
 /* Style the submit button */
 button {
-    background-color: #009688;
+    background-color: #ff4b2b;
     color: #fff;
     cursor: pointer;
 }
 
 button:hover {
-    background-color: #00796b;
+    background-color: #ff4b2b;
 }
 
 /* Style the history container */

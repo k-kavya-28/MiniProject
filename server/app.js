@@ -37,7 +37,7 @@ try {
 
 // Use signup routes
 app.use('/user', require("./routes/user.routes"));
-app.use('/laundary', require("./routes/laundry.routes"));
+app.use('/laundry', require("./routes/laundry.routes"));
 app.use('/staff', require("./routes/staff.routes"));
 
 app.listen(port, () => {

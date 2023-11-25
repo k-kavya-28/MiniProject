@@ -3,54 +3,124 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Portal</title>
     <style>
+        /* CSS styles for the login portal */
         body {
             font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
+            background-color: #333; /* Background color */
             margin: 0;
             padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
             height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden; /* Hide overflow to prevent scrollbars */
         }
 
-        .container {
+        video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1; /* Place the video behind other elements */
+            opacity: 0.5; /* Adjust the opacity as needed */
+            transition: opacity 1s; /* Add transition effect for smoother changes */
+        }
+
+        h1 {
             text-align: center;
+            color: hsl(0, 0%, 100%); /* Text color */
+            font-size: 6em; /* Increase font size */
+            margin-bottom: 20px; /* Add some bottom margin */
         }
 
-        .button {
-            padding: 10px 20px;
-            font-size: 16px;
+        .login-form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .login-form button {
+            background: linear-gradient(to right, #FFD700, #FFA500); /* Gradient background */
+            color: white;
             cursor: pointer;
             border: none;
-            border-radius: 4px;
-            transition: background-color 0.3s ease;
-            text-decoration: none;
-            color: #fff;
+            size: 200px;
+            height: 120px;
+            width: 500px;
+            padding: 20px 40px; /* Increase button padding */
+            margin: 20px; /* Increase button margin */
+            font-size: 3em; /* Increase font size */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.5s;
+            animation: background-color-change 4s infinite;
         }
 
-        .student-button {
-            background-color: #4caf50;
+        .login-form button:hover {
+            background: linear-gradient(to right, #B8860B, #CD853F); /* Slightly darker gradient on hover */
         }
 
-        .laundry-button {
-            background-color: #2196f3;
-        }
-
-        .button:hover {
-            background-color: #333;
+        /* Animation keyframes */
+        @keyframes background-color-change {
+            0%, 100% {
+                background: linear-gradient(to right, #FFD700, #FFA500);
+            }
+            50% {
+                background: linear-gradient(to right, #FFA500, #FF6347);
+            }
         }
     </style>
 </head>
 <body>
+    <video id="bgVideo" autoplay loop muted playbackRate="0.3">
+        <!-- Replace 'bubbles.mp4' with the actual video URL -->
+        <source src="bubbles.mp4" type="video/mp4">
+    </video>
+    <h1>WashWise</h1>
+    <div class="login-form">
+        <button class="login-form student" onclick="window.location.href='./src/student/login/index.html'">Student</button>
+        <button class="login-form laundary_staff" onclick="window.location.href='./src/laundry/login/index.html'">Laundry Staff</button>
+    </div>
 
-<div class="container">
-    <h2>Login Portal</h2>
-    <a href="/src/student/login/index.html" class="button student-button">Student</a>
-    <a href="/src/laundry/login/index.html" class="button laundry-button">Laundry</a>
-</div>
+    <script>
+        var video = document.getElementById('bgVideo');
+        var isMouseMoving = false;
 
+        // Add event listeners for mousemove and mouseout
+        document.addEventListener('mousemove', function() {
+            isMouseMoving = true;
+            video.style.opacity = 1; // Make the video fully visible
+            // Adjust playback rate only when mouse is moving
+            if (video.playbackRate < 1.0) {
+                video.playbackRate += 0.01; // Increase playback rate gradually when mouse is moving, up to a limit of 1x
+            }
+        });
+
+        document.addEventListener('mouseout', function() {
+            isMouseMoving = false;
+        });
+
+        // Function to check mouse movement and adjust video playback
+        function checkMouseMovement() {
+            if (!isMouseMoving) {
+                video.style.opacity = 0.5; // Reduce opacity when mouse is not moving
+                // Adjust playback rate only when mouse is not moving
+                if (video.playbackRate > 0.4) {
+                    video.playbackRate -= 0.01; // Decrease playback rate gradually when mouse is not moving, down to a limit of 0.4x
+                }
+            }
+
+            // Repeat the function
+            requestAnimationFrame(checkMouseMovement);
+        }
+
+        // Start checking mouse movement
+        checkMouseMovement();
+    </script>
 </body>
 </html>
