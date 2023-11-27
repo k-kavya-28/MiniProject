@@ -11,7 +11,7 @@ const SignUpController=async(req,res)=>{
         // Check if the rollNumber already exists
         const existingUser = await User.findOne({ rollNumber:UserData.rollNumber });
         if (existingUser) {
-          return res.status(400).json({ message: 'User with this roll number already exists' });
+          return res.json({ message: 'User already exists' })
         }
     
         // Create a new user
@@ -33,18 +33,17 @@ const SignInController=async(req,res)=>{
         const { userId, password } = req.body;
         const user = await User.findOne({ uniqUserName: userId });
         if (!user) {
-          return res.status(401).json({ message: 'Invalid credentials' });
+          return res.json({ message: 'Invalid credentials', created: false });
         }
         if(user.password!==password){
-            return res.status(401).json({ message: 'Invalid credentials' });
+            return res.json({ message: 'Invalid credentials', created: false });
         }
         const token = jwt.sign({ id: user._id }, jwt_key);
-        res.status(200).json({ token: token, message: 'Logged in successfully' });
+        res.status(200).json({ token: token, message: 'Logged in successfully', created: true });
     } catch (error) {
-        res.send({
-            message: error.message
-        });
+        res.status(500).json({ message: 'Internal Server Error' });
     }
+
 }
 
 const fetchData=async(req,res)=>{
@@ -67,4 +66,17 @@ const fetchData=async(req,res)=>{
     }
 }   
 
-module.exports={SignUpController,SignInController,fetchData}
+const changePassword = async (req, res) => {
+    try {
+        const { token, newPassword } = req.body;
+        const decoded = jwt.verify(token, jwt_key);
+        const user = await User.findById(decoded.id);
+        user.password = newPassword;
+        await user.save();
+        res.status(200).json({ message: 'Password changed successfully' });
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+module.exports={SignUpController,SignInController,fetchData,changePassword}

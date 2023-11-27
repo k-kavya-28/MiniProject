@@ -56,7 +56,7 @@
     <h1>Give Laundry Page</h1>
     
     <!-- Form for giving laundry -->
-    <form id="giveLaundryForm" action="#" onsubmit="PostCreate()">    
+    <form id="giveLaundryForm" action="#">    
 
         <!-- <label for="giveDate">Give Date:</label>
         <input type="date" id="giveDate" name="giveDate" required><br> -->
@@ -203,13 +203,14 @@
         <!-- <label for="totalQuantity">Total Quantity (Max 10):</label> -->
         <!-- <input type="number" id="totalQuantity" name="totalQuantity" min="0" max="10" readonly><br> -->
 
-        <button type="submit" id="submitBtn" onclick="showSubmitAlert()">Submit</button>
+        <button type="submit" id="submitBtn" onclick="showSubmitAlert(event)">Submit</button>
     </form>
 
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script>
-         function showSubmitAlert() {
-         alert("Are the details correct? Do you want to submit?");
+        function showSubmitAlert(event) {
+            event.preventDefault();
+            PostCreate();
         }
 
         const studentId = document.getElementById('customerName');
@@ -237,7 +238,6 @@
         const totalQuantity = document.getElementById('totalQuantity');
         const submitBtn = document.getElementById('submitBtn');
 
-        // Get today's date and set it as the default value for the date input
         const today = new Date();
         const todayString = today.toISOString().substr(0, 10);
         giveDate.value = todayString;
@@ -292,65 +292,18 @@
                     status: "notpicked"
                 });
                 console.log(res.data);
+
+                if(res.data.created == false){
+                    window.location.reload();
+                    alert(res.data.message);
+                    return;
+                }
                 alert("Laundry given successfully");
                 window.location.href = `./bill.html?laundryId=${res.data.laundry._id}`
             } catch (error) {
                 console.log(error);
             }
         }
-
-    //     function generateBillDetails() {
-    //     // Create an object with the necessary data for the bill
-    //     return {
-    //         customerID: studentId.value,
-    //         giveDate: giveDate.value,
-    //         items: {
-    //             Shirt: {
-    //                 quantity: shirtQuantity.value,
-    //                 remarks: shirtRemarks.value
-    //             },
-    //             Pants: {
-    //                 quantity: pantsQuantity.value,
-    //                 remarks: pantsRemarks.value
-    //             },
-    //             Jacket: {
-    //                 quantity: jacketQuantity.value,
-    //                 remarks: jacketRemarks.value
-    //             },
-    //             Kurta: {
-    //                 quantity: kurtaQuantity.value,
-    //                 remarks: kurtaRemarks.value
-    //             },
-    //             Pyjama: {
-    //                 quantity: pyjamaQuantity.value,
-    //                 remarks: pyjamaRemarks.value
-    //             },
-    //             Skirt: {
-    //                 quantity: skirtQuantity.value,
-    //                 remarks: skirtRemarks.value
-    //             },
-    //             Turban: {
-    //                 quantity: turbanQuantity.value,
-    //                 remarks: turbanRemarks.value
-    //             },
-    //             Jeans: {
-    //                 quantity: jeansQuantity.value,
-    //                 remarks: jeansRemarks.value
-    //             },
-    //             Tshirt: {
-    //                 quantity: tshirtQuantity.value,
-    //                 remarks: tshirtRemarks.value
-    //             },
-    //             Shorts: {
-    //                 quantity: shortsQuantity.value,
-    //                 remarks: shortsRemarks.value
-    //             }
-                
-    //         },
-    //         totalQuantity: totalQuantity.textContent,
-    //         status: "notpicked"
-    //     };
-    // }
 
         document.addEventListener("DOMContentLoaded", function () {
             const quantityInputs = document.querySelectorAll('.itemQuantity');

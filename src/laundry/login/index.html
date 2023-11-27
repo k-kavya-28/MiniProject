@@ -38,15 +38,14 @@
           password: password
         })
         console.log(res.data);
-        if (res.data.token) {
+        if (res.data.created == true) {
           Cookies.set('staffToken', res.data.token);
           const token = Cookies.get('staffToken');
           console.log(token);
           window.location.href = '../dashboard/index.html'
-          // window.location.replace('../dashboard/index.html');
-
         } else {
           alert("Invalid credentials");
+          window.location.reload();
         }
       } catch (error) {
         console.log(error);

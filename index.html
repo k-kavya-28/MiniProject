@@ -33,7 +33,7 @@
         h1 {
             text-align: center;
             color: hsl(0, 0%, 100%); /* Text color */
-            font-size: 6em; /* Increase font size */
+            font-size: 4em; /* Decreased font size */
             margin-bottom: 20px; /* Add some bottom margin */
         }
 
@@ -44,25 +44,24 @@
         }
 
         .login-form button {
-            background: linear-gradient(to right, #FFD700, #FFA500); /* Gradient background */
+            background: #FFD700; /* Constant yellow background */
             color: white;
             cursor: pointer;
             border: none;
             size: 200px;
-            height: 120px;
-            width: 500px;
-            padding: 20px 40px; /* Increase button padding */
-            margin: 20px; /* Increase button margin */
-            font-size: 3em; /* Increase font size */
+            height: 80px; /* Decreased button height */
+            width: 300px; /* Decreased button width */
+            padding: 10px 20px; /* Decreased button padding */
+            margin: 10px; /* Decreased button margin */
+            font-size: 2em; /* Decreased font size */
             display: flex;
             align-items: center;
             justify-content: center;
             transition: background-color 0.5s;
-            animation: background-color-change 4s infinite;
         }
 
         .login-form button:hover {
-            background: linear-gradient(to right, #B8860B, #CD853F); /* Slightly darker gradient on hover */
+            background: #FFA500; /* Orange background on hover */
         }
 
         /* Animation keyframes */
@@ -79,7 +78,7 @@
 <body>
     <video id="bgVideo" autoplay loop muted playbackRate="0.3">
         <!-- Replace 'bubbles.mp4' with the actual video URL -->
-        <source src="bubbles.mp4" type="video/mp4">
+        <source src="./bubbles.mp4" type="video/mp4">
     </video>
     <h1>WashWise</h1>
     <div class="login-form">

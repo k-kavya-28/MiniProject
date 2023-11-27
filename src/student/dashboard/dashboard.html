@@ -36,7 +36,7 @@
 			<a class="ml-2 text-sm font-semibold text-gray-600 hover:text-indigo-700" href="#">Developer Team</a>
 		  </div>
         <!-- user profile button -->
-		<button class="ml-auto w-8 h-8 overflow-hidden rounded-full cursor-pointer">
+		<button class="ml-auto w-8 h-8 overflow-hidden rounded-full cursor-pointer" onclick="gotochangePassword()">
 			<img class="w-full h-full" src="https://imgs.search.brave.com/lLnqg2kPdGM-e7B_ihhzq3q2eqzhmvI24aK9tQ2341c/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9pY29u/LWxpYnJhcnkuY29t/L2ltYWdlcy91c2Vy/LWljb24tanBnL3Vz/ZXItaWNvbi1qcGct/Ni5qcGc" alt="">
 		  </button>
 	</div>
@@ -167,7 +167,9 @@
 	}
 	fetchDeliveredLaundry();
 	
-	
+	function gotochangePassword() {
+		window.location.href = '../change_password/change_password.html';
+	}
 </script>
 </body>
 </html>

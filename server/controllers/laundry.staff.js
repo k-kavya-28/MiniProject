@@ -33,13 +33,13 @@ const SignInController = async (req, res) => {
     const { userID, password } = req.body;
     const user = await LaundryStaff.findOne({ userID: userID });
     if (!user) {
-      return res.status(401).json({ message: "Invalid credentials" });
+      return res.json({ message: "Invalid credentials", created: false});
     }
     if (user.password !== password) {
-      return res.status(401).json({ message: "Invalid credentials" });
+      return res.json({ message: "Invalid credentials",  created: false });
     }
     const token = jwt.sign({ id: user._id }, jwt_key);
-    res.status(200).json({ token: token, message: "Logged in successfully" });
+    res.status(200).json({ token: token, message: "Logged in successfully",  created: true });
   } catch (error) {
     res.send({
       message: error.message,

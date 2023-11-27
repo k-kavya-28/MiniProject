@@ -97,20 +97,21 @@
       userId: userId,
       password: password
     })
-    console.log(res.data);
-    if (res.data.token) {
+    console.log(res.data.token);
+
+    if(res.data.created == true){
       Cookies.set('token', res.data.token);
       const token = Cookies.get('token');
       console.log(token);
       window.location.href = '../dashboard/dashboard.html'
     } else {
-      alert("Invalid credentials");
+      alert(res.data.message)
+      window.location.reload();
     }
   } catch (error) {
     console.log(error);
   }
 }
-    
     
   function generateCode() {
     const roll = document.getElementById('roll').value.trim();
@@ -164,15 +165,13 @@
         rollNumber: roll.value,
         hostel: hostel.value,
         uniqUserName: code.value,
-    }).then((response) => {
-        console.log(response);
-    }).catch((error) => {
-        console.log(error);
     })
     console.log(res);
 
+    alert(res.data.message)
+
     // Redirect to login page
-    // window.location.href = '../login/index.html';
+    window.location.href = '../login/index.html';
   }
 
   function validateName(name) {

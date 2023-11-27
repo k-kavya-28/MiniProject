@@ -5,19 +5,35 @@ const jwt_key=process.env.JWT_KEY
 
 const CreateLaundry=async(req,res)=>{
     try{
+        console.log("Inside CreateLaundry")
         const LaundaryData=req.body
-        const UserDoc=await User.find({customerID:LaundaryData.customerID})
-        if(!UserDoc) throw new Error("Customer ID not Valid")
-        const localDate=new Date().toLocaleDateString()
-        // const existingLaunday=await LaundaryModel.findOne({customerID:LaundaryData.customerID,givenDate:localDate})
-        // console.log(existingLaunday)
-        // console.log(new Date().toLocaleDateString())
-        //  if(existingLaunday) throw new Error("User Has already given Laundary for today")
-         
-        const laundaryDoc=await LaundaryModel.create({...LaundaryData,giveDate:localDate})
+        console.log(LaundaryData)
+        const UserDoc=await User.findOne({uniqUserName:LaundaryData.customerID})
+        console.log(UserDoc)
+        if(!UserDoc) {
+            console.log("User not found")
+            res.json({
+                message:"User not found",
+                created:false
+            })
+            return;
+        }
+        const existingLaundry=await LaundaryModel.find({customerID:LaundaryData.customerID, giveDate:LaundaryData.giveDate})
+        console.log(existingLaundry)
+        
+        if(existingLaundry.length>0) {
+            console.log("Laundry already exists")
+            res.json({
+                message:"Laundry already submitted today",
+                created:false
+            })
+            return;
+        }
+
+        const laundaryDoc=await LaundaryModel.create({...LaundaryData,giveDate:LaundaryData.giveDate,customerID:LaundaryData.customerID})
         if(!laundaryDoc) throw new Error("Failed to create launday")
         res.json({
-           message:"laundary Created",
+           message:"laundry created successfully",
            created:true,
            laundry: laundaryDoc
         })
