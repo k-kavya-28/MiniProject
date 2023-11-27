@@ -51,6 +51,8 @@
   
       // Send the data as JSON
       xhr.send(JSON.stringify({ name, contactNumber, feedback }));
+      alert("Feedback sent successfully!");
+      window.location.reload();
     }
 
   </script>

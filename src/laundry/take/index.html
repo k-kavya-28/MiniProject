@@ -8,27 +8,35 @@
 
     <title>Laundry Page</title>
 </head>
-<body class="bg-gradient-to-tr from-blue-200 via-indigo-200 to-pink-200">
+<!-- <body class="bg-gradient-to-tr from-blue-200 via-indigo-200 to-pink-200"> -->
+    <body style="background: linear-gradient(to right, #FFDAB9, #fb8470);"></body>
 
     <div class="container">
-        <h1>Laundry Page</h1>
-        <form id="usernameForm">
+        <!-- <h1>Laundry Page</h1> -->
+        <!-- <form id="usernameForm">
             <label for="customerID">Enter Student Code:</label>
             <input type="text" id="customerID" name="customerID" required>
             <button type="button" onclick="fetchNotDeliveredLaundry()">Submit</button>
+        </form> -->
+        <form id="usernameForm" class="flex items-center">
+            <label for="customerID" class="mr-2 text-xl">Enter Student Code:</label>
+            <input type="text" id="customerID" name="customerID" required class="mr-2" placeholder="Student ID">
+            <br>
+            <button type="button" onclick="fetchNotDeliveredLaundry()" class="bg-white-500 text-white py-2 px-4 hover:bg-gray-700">Submit</button>
         </form>
+        
     </div>
 
 
     <div class="flex flex-col min-h-screen text-gray-700">
             
         <div class="px-4 mt-6">
-            <h1 class="text-2xl font-bold">Laundry</h1>
+            <!-- <h1 class="text-3xl font-bold">Laundry</h1> -->
         </div>
         <div class="flex flex-grow px-4 mt-4 space-x-6 overflow-auto">
             <div class="flex flex-col w-full lg:w-1/2">
                 <div class="flex items-center flex-shrink-0 h-10 px-2">
-                    <span class="block text-sm font-semibold">In process Laundry</span>
+                    <!-- <span class="block text-xl font-semibold">In process Laundry</span> -->
                     <!-- <span class="flex items-center justify-center w-5 h-5 ml-2 text-sm font-semibold text-indigo-500 bg-white rounded bg-opacity-30">3</span> -->
                 </div>
                 <div class="flex flex-col pb-2 overflow-auto" id="laundry-container"></div>

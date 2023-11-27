@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Team Page</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+        }
+
+        header {
+            background: linear-gradient(45deg, #FF8C00, #FF4500);
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+        }
+
+        section {
+            padding-top: 100px;
+            padding-bottom: 100px;
+            padding-right: 230px;
+            padding-left: 230px;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(1, 1fr);
+            background-color: #f0f0f0; /* Background color for all boxes */
+             /* Add space on both sides */
+        }
+
+        .grid-item {
+            height: 400px;
+            text-align: center;
+            background-color: #f0f0f0; /* Background color for all boxes */
+            padding: 20px;
+        }
+
+        /* Target specific boxes */
+        .grid-item:nth-child(2),
+        .grid-item:nth-child(4),
+        .grid-item:nth-child(6) {
+            background-color: #fff; /* White background for specific boxes */
+        }
+
+        .grid-item:nth-child(1),
+        .grid-item:nth-child(3),
+        .grid-item:nth-child(5) {
+            background-color: #ccc; /* Set gray background for specific boxes */
+            background-size: cover; /* Ensure the image covers the entire box */
+            background-position: center; /* Center the image within the box */
+            background-repeat: no-repeat; /* Do not repeat the background image */
+        }
+
+        .grid-item:nth-child(1) {
+            background-image: url('../../assets/3.jpeg');
+        }
+        
+        .grid-item:nth-child(3) {
+            background-image: url('../../assets/1.jpeg');
+        }
+        
+        .grid-item:nth-child(5) {
+            background-image: url('../../assets/2.jpeg');
+        }
+
+        /* Adjust line spacing for paragraph text */
+        .grid-item p {
+            line-height: 1.6;
+        }
+
+        @media (min-width: 600px) {
+            /* Adjust grid layout for screens wider than 600px */
+            .grid-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 900px) {
+            /* Adjust grid layout for screens wider than 900px */
+            .grid-container {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header>
+        <h1>Who Are We? Meet Our Team</h1>
+        <p>“Alone we can do so little; together we can do so much.” - Helen Keller</p>
+    </header>
+
+    <!-- Main Section -->
+    <section>
+        <div class="grid-container">
+            <div class="grid-item"></div>
+            <div class="grid-item">
+                <h2>Khushi Kavya</h2>
+                <h3>Backend Developer</h3>
+                <p><i> I specialize in backend development, particularly in the WashWise project, where I exclusively
+                     utilized Node.js for server-side scripting. Leveraging the power of Node.js along with Express
+                      for server framework and MongoDB for database management, I ensured the seamless functionality
+                       and efficiency of the website's backend. Passionate about pushing digital boundaries, 
+                       I'm dedicated to delivering exceptional user experiences with Node.js, Express, and MongoDB.</i></p>
+            </div>
+            <div class="grid-item"></div>
+            <div class="grid-item">
+                <h2>Abhinav</h2>
+                <h3>UI/UX Developer</h3>
+                <p><i>I'm a UI/UX Developer who led the design and frontend development for the WashWise website.
+                     From conceptualization to execution, I crafted visually engaging and user-friendly webpages.
+                      Using my skills in HTML, CSS, and JavaScript, I seamlessly translated designs into responsive,
+                       high-performance interfaces. The WashWise project showcases my commitment to marrying design
+                        aesthetics with seamless functionality. Excited to bring this passion to future endeavors.</i></p>
+            </div>
+            <div class="grid-item"></div>
+            <div class="grid-item">
+                <h2>Ishan Jindal</h2>
+                <h3>Frontend Developer</h3>
+                <p><i> I'm a dedicated Frontend Developer on the WashWise project. With a knack for transforming 
+                    designs into interactive web experiences, I specialize in HTML, CSS, and JavaScript. My focus
+                     is on crafting seamless user interfaces that prioritize both aesthetics and functionality.
+                      Excited to be part of a collaborative team, I thrive on bringing innovation to the digital
+                       landscape and enhancing user experiences.</i></p>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>

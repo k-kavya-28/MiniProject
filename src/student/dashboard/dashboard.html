@@ -4,6 +4,16 @@
   <meta charset="UTF-8">
   <title>WashWise</title>
   <style>
+	a {
+    color: #808080; /* Set the default color to gray */
+    transition: color 0.3s ease; /* Add a smooth transition effect */
+	}
+
+a:hover {
+    color: orangered; /* Change to white on hover */
+}
+
+
     .rotate-45 {
         --transform-rotate: 45deg;
         transform: rotate(45deg);
@@ -22,7 +32,7 @@
 	<link rel="stylesheet" href="./style.css">
 
 </head>
-<body class="bg-gradient-to-tr from-blue-200 via-indigo-200 to-pink-200"></body>
+<body style="background: linear-gradient(to right, #FFDAB9, #fb8470);"></body>
 <!-- partial:index.partial.html -->
 <!-- Component Start -->
 <div class="flex flex-col min-h-screen text-gray-700">
@@ -32,32 +42,32 @@
         
         <!-- Navigation Links -->
 		<div class="ml-4">
-			<a class="text-sm font-semibold text-indigo-700" href="./index.html">Dashboard</a>
-			<a class="ml-2 text-sm font-semibold text-gray-600 hover:text-indigo-700" href="../support/support_page/index.html">Support</a>
-			<a class="ml-2 text-sm font-semibold text-gray-600 hover:text-indigo-700" href="../about.html">About</a>
-			<a class="ml-2 text-sm font-semibold text-gray-600 hover:text-indigo-700" href="../tcs.html">Terms & Conditions</a>
-			<a class="ml-2 text-sm font-semibold text-gray-600 hover:text-indigo-700" href="#">FAQs</a>
-			<a class="ml-2 text-sm font-semibold text-gray-600 hover:text-indigo-700" href="#">Developer Team</a>
+			<a class="ml-2 text-sm font-semibold text-orange-700" href="./dashboard.html">Dashboard</a>
+			<a class="ml-2 text-sm font-semibold text-gray-600 hover:text-orange-700" href="../support/support_page/index.html">Support</a>
+			<a class="ml-2 text-sm font-semibold text-gray-600 hover:text-orange-700" href="../about.html">About</a>
+			<a class="ml-2 text-sm font-semibold text-gray-600 hover:text-orange-700" href="../tcs.html">Terms & Conditions</a>
+			<a class="ml-2 text-sm font-semibold text-gray-600 hover:text-orange-700" href="../faq.html">FAQs</a>
+			<a class="ml-2 text-sm font-semibold text-gray-600 hover:text-orange-700" href="../developer.html">Developer Team</a>
 		  </div>
         <!-- user profile button -->
 		<button class="ml-auto w-8 h-8 overflow-hidden rounded-full cursor-pointer" onclick="gotochangePassword()">
-			<img class="w-full h-full" src="https://imgs.search.brave.com/lLnqg2kPdGM-e7B_ihhzq3q2eqzhmvI24aK9tQ2341c/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9pY29u/LWxpYnJhcnkuY29t/L2ltYWdlcy91c2Vy/LWljb24tanBnL3Vz/ZXItaWNvbi1qcGct/Ni5qcGc" alt="">
+			<img class="w-full h-full" src="https://imgs.search.brave.com/mbwUYEmIHlkN9AfOe5LveY4QzMUCpRG5kLKD9qIwczM/rs:fit:500:0:0/g:ce/aHR0cHM6Ly91cGxv/YWQud2lraW1lZGlh/Lm9yZy93aWtpcGVk/aWEvY29tbW9ucy9l/L2VmL1NvZnRpZXMt/aWNvbnMtbG9ja18y/NTZweC5wbmc" alt="">
 		  </button>
 	</div>
 	<div class="px-4 mt-6">
-		<h1 class="text-2xl font-bold">Laundry</h1>
+		<h1 class="text-3xl font-bold">Laundry</h1>
 	</div>
 	<div class="flex flex-grow px-4 mt-4 space-x-6 overflow-auto">
 		<div class="flex flex-col w-full lg:w-1/2">
 			<div class="flex items-center flex-shrink-0 h-10 px-2">
-				<span class="block text-sm font-semibold">In process Laundry</span>
+				<span class="block text-xl font-semibold">In process Laundry</span>
 				<!-- <span class="flex items-center justify-center w-5 h-5 ml-2 text-sm font-semibold text-indigo-500 bg-white rounded bg-opacity-30">3</span> -->
 			</div>
 			<div class="flex flex-col pb-2 overflow-auto" id="laundry-container"></div>
 		</div>
 		<div class="flex flex-col w-full lg:w-1/2">
 			<div class="flex items-center flex-shrink-0 h-10 px-2">
-				<span class="block text-sm font-semibold">History</span>
+				<span class="block text-xl font-semibold">History</span>
 				<!-- <span class="flex items-center justify-center w-5 h-5 ml-2 text-sm font-semibold text-indigo-500 bg-white rounded bg-opacity-30">3</span> -->
 			</div>
 			<div class="flex flex-col pb-2 overflow-auto" id="laundary-container-2">
@@ -108,7 +118,7 @@
 						<span class="ml-1 leading-none">${item.totalQuantity}</span>
 					</div>
 					<!-- Add details button and link -->
-					<a href="../../laundry/give/bill.html?laundryId=${item._id}" class="ml-4 text-blue-500">Details</a>
+					<a href="../../laundry/give/bill.html?laundryId=${item._id}" class="ml-4 text-gray-500">Details</a>
 				</div>
 
 				`;
@@ -157,7 +167,7 @@
 							<path fill-rule="evenodd" d="M18 5v8a2 2 0 01-2 2h-5l-5 4v-4H4a2 2 0 01-2-2V5a2 2 0 012-2h12a2 2 0 012 2zM7 8H5v2h2V8zm2 0h2v2H9V8zm6 0h-2v2h2V8z" clip-rule="evenodd" />
 						</svg>
 						<span class="ml-1 leading-none">${item.totalQuantity}</span>
-						<a href="../../laundry/give/bill.html?laundryId=${item._id}" class="ml-4 text-blue-500">Details</a>
+						<a href="../../laundry/give/bill.html?laundryId=${item._id}" class="ml-4 text-gray-500">Details</a>
 						</div>
 					</div>
 				`;

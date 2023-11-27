@@ -27,7 +27,7 @@ h1 {
 
 /* Style the form header */
 header {
-  background-color: #009688;
+  background-color: #f75e43;
   color: #fff;
   padding: 20px;
   text-align: center;
@@ -57,13 +57,13 @@ textarea {
 }
 
 input[type="button"] {
-  background-color: #009688;
+  background-color: #ff4b2b;
   color: #fff;
   cursor: pointer;
 }
 
 input[type="button"]:hover {
-  background-color: #00796b;
+  background-color: #ff4b2b;
 }
 
 input[type="button"]:focus {

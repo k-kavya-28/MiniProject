@@ -26,7 +26,7 @@ input {
     margin-bottom: 20px;
 }
 
-button {
+/* button {
     padding: 10px;
     background-color: #4caf50;
     color: white;
@@ -36,11 +36,34 @@ button {
 
 button:hover {
     background-color: grey;
-}
+} */
 
 .group:hover .group-hover\:flex {
 	display: flex !important;
 }
 
-
-
+#usernameForm {
+    display: flex;
+    align-items: center;
+  }
+  
+  #customerID {
+    margin-right: 8px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  button {
+    background-color: #fff;
+    color: #000;
+    padding: 8px 12px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    color: #fff;
+  }
+  
+  /* Remove the margin-left: auto; from the button */
+  
