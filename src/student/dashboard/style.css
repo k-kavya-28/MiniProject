@@ -1,4 +1,53 @@
-.group:hover .group-hover\:flex {
-	display: flex !important;
+/* Paste your CSS styles here */
+
+.rotate-45 {
+    --transform-rotate: 45deg;
+    transform: rotate(45deg);
 }
 
+.group:hover .group-hover\:flex {
+    display: flex;
+}
+
+.group:hover .group-hover\:flex {
+    display: flex !important;
+}
+
+/* Add your other styles here */
+
+.bg-solid-color {
+    background-color: #ff4b2b;
+}
+
+.flex-col {
+    display: flex;
+    flex-direction: column;
+}
+
+.min-h-screen {
+    min-height: 100vh;
+}
+
+.text-gray-700 {
+    color: #333;
+}
+
+/* Replace existing color codes with #ff4b2b */
+body {
+    background: #ff4b2b;
+}
+
+button {
+    border: 1px solid #ff4b2b;
+    background-color: #ff4b2b;
+}
+
+button:active {
+    transform: scale(0.95);
+}
+
+button.ghost {
+    border-color: #ffffff;
+}
+
+/* Add more styles as needed */

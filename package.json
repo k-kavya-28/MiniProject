@@ -50,6 +50,7 @@
     ]
   },
   "devDependencies": {
+    "parcel-bundler": "^1.12.5",
     "rescripts": "^0.0.1-security"
   },
   "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
