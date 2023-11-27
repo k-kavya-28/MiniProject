@@ -1,5 +1,7 @@
 const LaundaryModel = require("../models/laundry.model")
 const User = require("../models/user")
+const jwt = require("jsonwebtoken")
+const jwt_key=process.env.JWT_KEY
 
 const CreateLaundry=async(req,res)=>{
     try{
@@ -16,7 +18,8 @@ const CreateLaundry=async(req,res)=>{
         if(!laundaryDoc) throw new Error("Failed to create launday")
         res.json({
            message:"laundary Created",
-           created:true
+           created:true,
+           laundry: laundaryDoc
         })
     }catch(err){
         console.log(err.message)
@@ -29,16 +32,22 @@ const CreateLaundry=async(req,res)=>{
 
 const FetchNotDeliveredLaundry=async(req,res)=>{
     try{
-        const LaudnaryData=req.body
-        console.log(LaudnaryData)
-        const LaundaryDocs=await User.find({customerID:LaudnaryData.customerID,status:LaudnaryData.status})
-        console.log(LaundaryDocs)
-        if(!LaundaryDocs) throw new Error("Failed to Fetch Laundary Data")
-        res.json({
-            message:"User data fetched",
-            fetched:true,
-            LaundaryData:LaundaryDocs
-        })
+        const token = req.query.cookieVal;
+        console.log(token)
+        if(!token){
+            res.status(401).send({message:"Unauthorized"})
+        }
+        const decoded=jwt.verify(token,jwt_key)
+        console.log(decoded)
+        const user=await User.findById(decoded.id)
+        console.log(user)
+        const laundry = await LaundaryModel.find({customerID: user.uniqUserName, status: "notpicked"})
+        console.log(laundry)
+        res.status(200).json({
+            user: user,
+            laundry: laundry,
+            message: 'Fetched data successfully'
+        });
     }catch(err){
         res.json({
             message:err.message,
@@ -47,12 +56,24 @@ const FetchNotDeliveredLaundry=async(req,res)=>{
     }
 }
 
-const DeliverLaundry=async(req,res)=>{
+const FetchDeliveredLaundry=async(req,res)=>{
     try{
-        const laundaryID=req.params.id
-        const UpdateLaundary=await LaundaryModel.findByIdAndUpdate()
-
-
+        const token = req.query.cookieVal;
+        console.log(token)
+        if(!token){
+            res.status(401).send({message:"Unauthorized"})
+        }
+        const decoded=jwt.verify(token,jwt_key)
+        // console.log(decoded)
+        const user=await User.findById(decoded.id)
+        // console.log(user)
+        const laundry = await LaundaryModel.find({customerID: user.uniqUserName, status: "picked"})
+        console.log(laundry)
+        res.status(200).json({
+            user: user,
+            laundry: laundry,
+            message: 'Fetched data successfully'
+        });
     }catch(err){
         res.json({
             message:err.message,
@@ -61,5 +82,64 @@ const DeliverLaundry=async(req,res)=>{
     }
 }
 
+const validateAndFetchND= async(req,res)=>{
+    try{
+        const studId = req.params.studId;
+        console.log(`studId: ${studId}`)
+        // const studId = req.body.studId;
+        const laundry = await LaundaryModel.find({customerID: studId, status: "notpicked"})
+        console.log(laundry)
+        res.status(200).json({
+            laundry: laundry,
+            message: 'Fetched data successfully'
+        });
+    }catch(err){
+        res.json({
+            message:err.message,
+            fetched:false
+        })
+    }
+}
 
-module.exports={CreateLaundry,FetchNotDeliveredLaundry,DeliverLaundry}
+const DeleteLaundry = async(req,res)=> {
+    try{
+        const laundryId = req.params.laundryId;
+        console.log(`laundryId: ${laundryId}`)
+        const laundry = await LaundaryModel.findById(laundryId);
+        laundry.status = "picked";
+        await laundry.save();
+        console.log(laundry)
+        res.status(200).json({
+            message: 'Updated data successfully'
+        });
+    }catch(error){
+        res.json({
+            message:error.message,
+            deleted:false
+        })
+    }
+}
+
+const fetchLaundry = async(req,res) => {
+    try {
+        const laundryId = req.params.laundryId;
+        console.log(`laundryId: ${laundryId}`)
+        const laundry = await LaundaryModel.findById(laundryId);
+        console.log(laundry)
+        res.status(200).json({
+            laundry: laundry,
+            message: 'Fetched data successfully'
+        });
+    } catch (error) {
+        console.log(error);
+    }
+} 
+
+module.exports={
+    CreateLaundry,
+    FetchNotDeliveredLaundry,
+    FetchDeliveredLaundry,
+    validateAndFetchND,
+    DeleteLaundry,
+    fetchLaundry
+}

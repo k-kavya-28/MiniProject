@@ -74,6 +74,7 @@
   </div>
   </div>
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.5/dist/js.cookie.min.js"></script>
 <script>
   const signUpButton = document.getElementById("signUp");
   const signInButton = document.getElementById("signIn");
@@ -98,8 +99,9 @@
     })
     console.log(res.data);
     if (res.data.token) {
-      document.cookie = `token=${res.data.token}`
-      console.log(document.cookie);
+      Cookies.set('token', res.data.token);
+      const token = Cookies.get('token');
+      console.log(token);
       window.location.href = '../dashboard/dashboard.html'
     } else {
       alert("Invalid credentials");
@@ -170,7 +172,7 @@
     console.log(res);
 
     // Redirect to login page
-    window.location.href = '../login/index.html';
+    // window.location.href = '../login/index.html';
   }
 
   function validateName(name) {

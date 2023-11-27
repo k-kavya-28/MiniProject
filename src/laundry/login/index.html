@@ -26,6 +26,7 @@
     </div>
   </div>
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.5/dist/js.cookie.min.js"></script>
   <script>
     async function login() {
       var userId = document.getElementById('userId').value;
@@ -38,8 +39,9 @@
         })
         console.log(res.data);
         if (res.data.token) {
-          document.cookie = `laundarytoken=${res.data.token}`
-          console.log(document.cookie);
+          Cookies.set('staffToken', res.data.token);
+          const token = Cookies.get('staffToken');
+          console.log(token);
           window.location.href = '../dashboard/index.html'
           // window.location.replace('../dashboard/index.html');
 

@@ -53,7 +53,7 @@ const fetchData=async(req,res)=>{
         const decoded=jwt.verify(token,jwt_key)
         const user=await User.findById(decoded.id)
         const laundry = await Laundry.find({customerID: user.uniqUserName})
-        console.log(laundry)
+        // console.log(laundry)
         res.status(200).json({
             user: user,
             laundry: laundry,

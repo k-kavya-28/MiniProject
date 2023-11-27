@@ -7,6 +7,7 @@ const clothData = new mongoose.Schema({
   },
   remark: {
     type: String,
+    default: "",
   },
 });
 

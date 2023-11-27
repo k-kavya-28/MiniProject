@@ -1,0 +1,59 @@
+{
+  "_id": {
+    "$oid": "656431b82bd3a128a99b1c8c"
+  },
+  "customerID": "O118009",
+  "giveDate": "27/11/2023",
+  "Shirt": {
+    "quantity": 1,
+    "remark": "Ratiya se hai woh",
+    "_id": {
+      "$oid": "656431b82bd3a128a99b1c8d"
+    }
+  },
+  "Jacket": {
+    "quantity": 1,
+    "remark": "",
+    "_id": {
+      "$oid": "656431b82bd3a128a99b1c8e"
+    }
+  },
+  "Kurta": {
+    "quantity": 0,
+    "remark": "",
+    "_id": {
+      "$oid": "656431b82bd3a128a99b1c8f"
+    }
+  },
+  "Skirt": {
+    "quantity": 0,
+    "remark": "",
+    "_id": {
+      "$oid": "656431b82bd3a128a99b1c90"
+    }
+  },
+  "Turban": {
+    "quantity": 0,
+    "remark": "",
+    "_id": {
+      "$oid": "656431b82bd3a128a99b1c91"
+    }
+  },
+  "Tshirt": {
+    "quantity": 0,
+    "remark": "",
+    "_id": {
+      "$oid": "656431b82bd3a128a99b1c92"
+    }
+  },
+  "Shorts": {
+    "quantity": 0,
+    "remark": "",
+    "_id": {
+      "$oid": "656431b82bd3a128a99b1c93"
+    }
+  },
+  "totalQuantity": 3,
+  "status": "notpicked",
+  "__v": 0
+}

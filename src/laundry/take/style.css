@@ -35,5 +35,12 @@ button {
 }
 
 button:hover {
-    background-color: #45a049;
+    background-color: grey;
 }
+
+.group:hover .group-hover\:flex {
+	display: flex !important;
+}
+
+
+

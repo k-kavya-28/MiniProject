@@ -203,11 +203,15 @@
         <!-- <label for="totalQuantity">Total Quantity (Max 10):</label> -->
         <!-- <input type="number" id="totalQuantity" name="totalQuantity" min="0" max="10" readonly><br> -->
 
-        <button type="submit" id="submitBtn">Submit</button>
+        <button type="submit" id="submitBtn" onclick="showSubmitAlert()">Submit</button>
     </form>
 
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script>
+         function showSubmitAlert() {
+         alert("Are the details correct? Do you want to submit?");
+        }
+
         const studentId = document.getElementById('customerName');
         const giveDate = document.getElementById('giveDate');
         const shirtQuantity = document.querySelector('input[name="shirtQuantity"]');
@@ -240,61 +244,113 @@
 
         async function PostCreate() {
             try {
+                console.log("worling");
                 const res = await axios.post("http://localhost:3001/laundry/create", {
                     customerID: studentId.value,
                     giveDate: giveDate.value,
                     Shirt: {
                         quantity: shirtQuantity.value,
-                        remarks: shirtRemarks.value
+                        remark: shirtRemarks.value
                     },
-                    Pants: {
+                    Pant: {
                         quantity: pantsQuantity.value,
-                        remarks: pantsRemarks.value
+                        remark: pantsRemarks.value
                     },
                     Jacket: {
                         quantity: jacketQuantity.value,
-                        remarks: jacketRemarks.value
+                        remark: jacketRemarks.value
                     },
                     Kurta: {
                         quantity: kurtaQuantity.value,
-                        remarks: kurtaRemarks.value
+                        remark: kurtaRemarks.value
                     },
-                    Pyjama: {
+                    Pajama: {
                         quantity: pyjamaQuantity.value,
-                        remarks: pyjamaRemarks.value
+                        remark: pyjamaRemarks.value
                     },
                     Skirt: {
                         quantity: skirtQuantity.value,
-                        remarks: skirtRemarks.value
+                        remark: skirtRemarks.value
                     },
                     Turban: {
                         quantity: turbanQuantity.value,
-                        remarks: turbanRemarks.value
+                        remark: turbanRemarks.value
                     },
-                    Jeans: {
+                    Jean: {
                         quantity: jeansQuantity.value,
-                        remarks: jeansRemarks.value
+                        remark: jeansRemarks.value
                     },
                     Tshirt: {
                         quantity: tshirtQuantity.value,
-                        remarks: tshirtRemarks.value
+                        remark: tshirtRemarks.value
                     },
                     Shorts: {
                         quantity: shortsQuantity.value,
-                        remarks: shortsRemarks.value
+                        remark: shortsRemarks.value
                     },
                     totalQuantity: totalQuantity.textContent,
                     status: "notpicked"
                 });
                 console.log(res.data);
-
-                if(res.data.created==true){
-                    alert("Laundry given successfully");
-                } 
+                alert("Laundry given successfully");
+                window.location.href = `./bill.html?laundryId=${res.data.laundry._id}`
             } catch (error) {
                 console.log(error);
             }
         }
+
+    //     function generateBillDetails() {
+    //     // Create an object with the necessary data for the bill
+    //     return {
+    //         customerID: studentId.value,
+    //         giveDate: giveDate.value,
+    //         items: {
+    //             Shirt: {
+    //                 quantity: shirtQuantity.value,
+    //                 remarks: shirtRemarks.value
+    //             },
+    //             Pants: {
+    //                 quantity: pantsQuantity.value,
+    //                 remarks: pantsRemarks.value
+    //             },
+    //             Jacket: {
+    //                 quantity: jacketQuantity.value,
+    //                 remarks: jacketRemarks.value
+    //             },
+    //             Kurta: {
+    //                 quantity: kurtaQuantity.value,
+    //                 remarks: kurtaRemarks.value
+    //             },
+    //             Pyjama: {
+    //                 quantity: pyjamaQuantity.value,
+    //                 remarks: pyjamaRemarks.value
+    //             },
+    //             Skirt: {
+    //                 quantity: skirtQuantity.value,
+    //                 remarks: skirtRemarks.value
+    //             },
+    //             Turban: {
+    //                 quantity: turbanQuantity.value,
+    //                 remarks: turbanRemarks.value
+    //             },
+    //             Jeans: {
+    //                 quantity: jeansQuantity.value,
+    //                 remarks: jeansRemarks.value
+    //             },
+    //             Tshirt: {
+    //                 quantity: tshirtQuantity.value,
+    //                 remarks: tshirtRemarks.value
+    //             },
+    //             Shorts: {
+    //                 quantity: shortsQuantity.value,
+    //                 remarks: shortsRemarks.value
+    //             }
+                
+    //         },
+    //         totalQuantity: totalQuantity.textContent,
+    //         status: "notpicked"
+    //     };
+    // }
 
         document.addEventListener("DOMContentLoaded", function () {
             const quantityInputs = document.querySelectorAll('.itemQuantity');

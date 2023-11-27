@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laundry Bill</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        .total-row {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Laundry Bill</h1>
+    <p>Date: <span id="billDate"></span></p>
+    <p>Student ID: <span id="studentID"></span></p>
+    <table>
+        <thead>
+            <tr>
+                <th>Item Name</th>
+                <th>Quantity</th>
+                <th>Remarks</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Shirt</td>
+                <td id="shirtQuantity">0</td>
+                <td id="shirtRemarks"></td>
+            </tr>
+            <tr>
+                <td>Pants</td>
+                <td id="pantsQuantity">0</td>
+                <td id="pantsRemarks"></td>
+            </tr>
+            <tr>
+                <td>Jacket</td>
+                <td id="jacketQuantity">0</td>
+                <td id="jacketRemarks"></td>
+            </tr>
+            <tr>
+                <td>Kurta</td>
+                <td id="kurtaQuantity">0</td>
+                <td id="kurtaRemarks"></td>
+            </tr>
+            <tr>
+                <td>Pyjama</td>
+                <td id="pyjamaQuantity">0</td>
+                <td id="pyjamaRemarks"></td>
+            </tr>
+            <tr>
+                <td>Skirt</td>
+                <td id="skirtQuantity">0</td>
+                <td id="skirtRemarks"></td>
+            </tr>
+            <tr>
+                <td>Turban</td>
+                <td id="turbanQuantity">0</td>
+                <td id="turbanRemarks"></td>
+            </tr>
+            <tr>
+                <td>Jeans</td>
+                <td id="jeansQuantity">0</td>
+                <td id="jeansRemarks"></td>
+            </tr>
+            <tr>
+                <td>T-Shirt</td>
+                <td id="tshirtQuantity">0</td>
+                <td id="tshirtRemarks"></td>
+            </tr>
+            <tr>
+                <td>Shorts</td>
+                <td id="shortsQuantity">0</td>
+                <td id="shortsRemarks"></td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr class="total-row">
+                <td colspan="2">Total Quantity:</td>
+                <td id="totalQuantity">0</td>
+            </tr>
+        </tfoot>
+    </table>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const laundryId = urlParams.get('laundryId');
+        console.log(laundryId);
+
+        async function fetchData (){
+            const res = await axios.get(`http://localhost:3001/laundry/fetch/${laundryId}`);
+            console.log(res.data);
+            const laundry = res.data.laundry;
+
+            document.getElementById('billDate').innerText = laundry.giveDate;
+            document.getElementById('studentID').innerText = laundry.customerID;
+            document.getElementById('shirtQuantity').innerText = laundry.Shirt.quantity;
+            document.getElementById('shirtRemarks').innerText = laundry.Shirt.remark;
+            document.getElementById('pantsQuantity').innerText = laundry.Pant.quantity;
+            document.getElementById('pantsRemarks').innerText = laundry.Pant.remark;
+            document.getElementById('jacketQuantity').innerText = laundry.Jacket.quantity;
+            document.getElementById('jacketRemarks').innerText = laundry.Jacket.remark;
+            document.getElementById('kurtaQuantity').innerText = laundry.Kurta.quantity;
+            document.getElementById('kurtaRemarks').innerText = laundry.Kurta.remark;
+            document.getElementById('pyjamaQuantity').innerText = laundry.Pajama.quantity;
+            document.getElementById('pyjamaRemarks').innerText = laundry.Pajama.remark;
+            document.getElementById('skirtQuantity').innerText = laundry.Skirt.quantity;
+            document.getElementById('skirtRemarks').innerText = laundry.Skirt.remark;
+            document.getElementById('turbanQuantity').innerText = laundry.Turban.quantity;
+            document.getElementById('turbanRemarks').innerText = laundry.Turban.remark;
+            document.getElementById('jeansQuantity').innerText = laundry.Jean.quantity;
+            document.getElementById('jeansRemarks').innerText = laundry.Jean.remark;
+            document.getElementById('tshirtQuantity').innerText = laundry.Tshirt.quantity;
+            document.getElementById('tshirtRemarks').innerText = laundry.Tshirt.remark;
+            document.getElementById('shortsQuantity').innerText = laundry.Shorts.quantity;
+            document.getElementById('shortsRemarks').innerText = laundry.Shorts.remark;
+            document.getElementById('totalQuantity').innerText = laundry.totalQuantity;
+
+        }
+
+        fetchData();
+    </script>
+</body>
+</html>
