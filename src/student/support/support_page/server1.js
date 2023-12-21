@@ -14,8 +14,8 @@ app.use(bodyParser.json());
 const transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
-    user: 'anyguest109@gmail.com',
-    pass: 'hgxy qljn qgyd bzou',
+    user: '#',
+    pass: '#',
   },
 });
 
